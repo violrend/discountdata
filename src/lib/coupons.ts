@@ -1,6 +1,6 @@
 export interface CouponJSON {
 	id: number;
-	createdAt: string;
+	created_at: string;
 	code: string;
 	url: string;
 	amount: string;
@@ -27,14 +27,12 @@ export class Coupon {
 		this.down_votes = [];
 	}
 
-	importFromJSON(json: CouponJSON) {
-		this.id = json.id;
-		this.createdAt = new Date(json.createdAt);
-		this.code = json.code;
-		this.url = json.url;
-		this.amount = json.amount;
-		this.up_votes = json.up_votes.map((date: string) => new Date(date));
-		this.down_votes = json.down_votes.map((date: string) => new Date(date));
+	static importFromJSON(json: CouponJSON): Coupon {
+		const coupon = new Coupon(json.id, json.code, json.url, json.amount);
+		coupon.createdAt = new Date(json.created_at);
+		coupon.up_votes = json.up_votes.map((date) => new Date(date));
+		coupon.down_votes = json.down_votes.map((date) => new Date(date));
+		return coupon;
 	}
 
 	getScore(): number {
@@ -44,6 +42,18 @@ export class Coupon {
 
 	getVoteScore(): number {
 		return this.up_votes.length - this.down_votes.length;
+	}
+
+	toJSON(): CouponJSON {
+		return {
+			id: this.id,
+			created_at: this.createdAt.toISOString(),
+			code: this.code,
+			url: this.url,
+			amount: this.amount,
+			up_votes: this.up_votes.map((date) => date.toISOString()),
+			down_votes: this.down_votes.map((date) => date.toISOString()),
+		};
 	}
 }
 
@@ -102,4 +112,21 @@ export function sort(coupons: Coupon[], searchString: string, sortBy: SortOption
 		default:
 			return filteredCoupons;
 	}
+}
+
+export async function fetchCoupons(
+	search: string,
+	sortBy: SortOptions,
+	limit: number,
+	offset: number
+): Promise<Coupon[]> {
+	// GET /api/coupons?search=string&sort=string&limit=number&offset=number
+	const res = await fetch(`/api/coupons?search=${search}&sort=${sortBy}&limit=${limit}&offset=${offset}`);
+
+	if (!res.ok) {
+		throw new Error(`Failed to fetch coupons: ${res.statusText}`);
+	}
+
+	const coupons = await res.json();
+	return coupons.map(Coupon.importFromJSON);
 }

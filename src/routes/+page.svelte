@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Input } from '$lib/components/ui/input/index';
-	import { type Coupon, sort, sortOptionNames, sortOptions, type SortOptions } from '$lib/coupons';
-	import { generateCoupons } from '$lib/generator';
+	import { type Coupon, fetchCoupons, sortOptionNames, sortOptions, type SortOptions } from '$lib/coupons';
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
 	import { writable } from 'svelte/store';
 	import { onMount } from 'svelte';
@@ -10,35 +9,37 @@
 	import * as Dialog from '$lib/components/ui/dialog/index';
 	import { Button } from '$lib/components/ui/button';
 
-	const coupons: Coupon[] = generateCoupons(30);
-
 
 	const searchValue = writable<string>('');
 	const sortBy = writable<SortOptions>('highest_score');
 
 	const sortedCoupons = writable<Coupon[]>([]);
 
-	function sortCoupons() {
+	let updateTimeout: any;
+
+	async function updateCoupons() {
 		try {
-			sortedCoupons.set(sort(
-				coupons,
-				$searchValue,
-				$sortBy
-			));
+			if (updateTimeout) {
+				clearTimeout(updateTimeout);
+			}
+
+			updateTimeout = setTimeout(async () => {
+				sortedCoupons.set(await fetchCoupons($searchValue, $sortBy, 50, 0));
+			}, 200);
 		} catch (e) {
 			console.log(e);
 		}
 	}
 
-	onMount(() => {
-		sortCoupons();
+	onMount(async () => {
+		await updateCoupons();
 
 		searchValue.subscribe(() => {
-			sortCoupons();
+			updateCoupons();
 		});
 
 		sortBy.subscribe(() => {
-			sortCoupons();
+			updateCoupons();
 		});
 	});
 
