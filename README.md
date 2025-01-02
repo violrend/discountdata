@@ -1,38 +1,74 @@
-# sv
+# DiscountDB 🏷️
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+An open-source database for coupons and discounts, freely available for everyone! 🎉
 
-## Creating a project
+## Overview 🔍
 
-If you're seeing this, you've probably already done this step. Congrats!
+DiscountDB is a community-driven platform that aims to collect and provide easy access to discount coupons across various services and retailers. Our mission is to make savings accessible to everyone through open data.
 
+🌐 **Live Website**: [https://discountdb.data-view.ch/](https://discountdb.data-view.ch/)
+
+## Technology Stack 💻
+
+- **Frontend**: SvelteKit with shadcn-svelte components
+- **Backend**: Supabase
+- **Package Manager**: Bun
+- **API Documentation**: Swagger UI (available at `/api/swagger`)
+
+## Getting Started 🚀
+
+1. Clone the repository
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+git clone https://github.com/ImGajeed76/discountdb.git
+cd discountdb
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+2. Install dependencies
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+bun install
 ```
 
-## Building
-
-To create a production version of your app:
-
+3. Set up environment variables
 ```bash
-npm run build
+cp .env.example .env
+```
+Fill in your Supabase credentials in the `.env` file.
+
+4. Run the development server
+```bash
+bun dev
 ```
 
-You can preview the production build with `npm run preview`.
+The application should now be running at `http://localhost:5173`
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## API Documentation 📚
+
+Our API is fully documented using Swagger UI. You can access the documentation at:
+```
+https://discountdb.data-view.ch/api/swagger
+```
+
+## License 📜
+
+This project is licensed under the GNU General Public License (GPL). This means you're free to:
+- Use the software for any purpose
+- Study how the software works and modify it
+- Redistribute copies of the software
+- Distribute copies of your modified versions to others
+
+For more details, see the [LICENSE](LICENSE) file.
+
+## Contributing 🤝
+
+We're currently working on our contribution guidelines. In the meantime, feel free to:
+- Open issues for bugs you find
+- Submit feature requests
+- Fork the repository and submit pull requests
+
+## Contact 📧
+
+If you have any questions or suggestions, please [open an issue](https://github.com/ImGajeed76/discountdb/issues) in our GitHub repository.
+
+---
+
+⭐ Star us on GitHub if you find this project useful!
