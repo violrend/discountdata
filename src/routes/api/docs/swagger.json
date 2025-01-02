@@ -29,7 +29,12 @@
             "schema": {
               "type": "string",
               "enum": [
-                "highest_score"
+                "newest",
+                "oldest",
+                "most_votes",
+                "least_votes",
+                "highest_score",
+                "lowest_score"
               ],
               "default": "highest_score"
             }
