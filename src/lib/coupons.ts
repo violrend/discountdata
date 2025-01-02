@@ -3,9 +3,10 @@ export interface CouponJSON {
 	created_at: string;
 	code: string;
 	url: string;
-	amount: string;
 	up_votes: string[];
 	down_votes: string[];
+	title: string;
+	description: string;
 }
 
 export class Coupon {
@@ -13,22 +14,30 @@ export class Coupon {
 	createdAt: Date;
 	code: string;
 	url: string;
-	amount: string;
 	up_votes: Date[];
 	down_votes: Date[];
+	title: string;
+	description: string;
 
-	constructor(id: number, code: string, url: string, amount: string) {
+	constructor(id: number, code: string, url: string, title: string, description: string) {
 		this.id = id;
 		this.createdAt = new Date();
 		this.code = code;
 		this.url = url;
-		this.amount = amount;
 		this.up_votes = [];
 		this.down_votes = [];
+		this.title = title;
+		this.description = description;
 	}
 
 	static importFromJSON(json: CouponJSON): Coupon {
-		const coupon = new Coupon(json.id, json.code, json.url, json.amount);
+		const coupon = new Coupon(
+			json.id,
+			json.code,
+			json.url,
+			json.title,
+			json.description
+		);
 		coupon.createdAt = new Date(json.created_at);
 		coupon.up_votes = json.up_votes.map((date) => new Date(date));
 		coupon.down_votes = json.down_votes.map((date) => new Date(date));
@@ -50,14 +59,15 @@ export class Coupon {
 			created_at: this.createdAt.toISOString(),
 			code: this.code,
 			url: this.url,
-			amount: this.amount,
 			up_votes: this.up_votes.map((date) => date.toISOString()),
 			down_votes: this.down_votes.map((date) => date.toISOString()),
+			title: this.title,
+			description: this.description
 		};
 	}
 }
 
-export type SortOptions = "newest" | "oldest" | "most_votes" | "least_votes" | "highest_score" | "lowest_score" | "amount_desc" | "amount_asc";
+export type SortOptions = "newest" | "oldest" | "most_votes" | "least_votes" | "highest_score" | "lowest_score";
 
 export const sortOptionNames: Record<SortOptions, string> = {
 	newest: "Newest",
@@ -66,8 +76,6 @@ export const sortOptionNames: Record<SortOptions, string> = {
 	least_votes: "Least Votes",
 	highest_score: "Highest Score",
 	lowest_score: "Lowest Score",
-	amount_desc: "Amount Descending",
-	amount_asc: "Amount Ascending",
 }
 
 export const sortOptions: SortOptions[] = Object.keys(sortOptionNames) as SortOptions[];
@@ -95,20 +103,6 @@ export function sort(coupons: Coupon[], searchString: string, sortBy: SortOption
 			return filteredCoupons.sort((a, b) => b.getScore() - a.getScore());
 		case 'lowest_score':
 			return filteredCoupons.sort((a, b) => a.getScore() - b.getScore());
-		case 'amount_desc':
-			// since amount can be percentage or dollar amount,
-			// we just sort by the number value
-			return filteredCoupons.sort((a, b) => {
-				const aAmount = parseInt(a.amount.replace(/\D/g, ''));
-				const bAmount = parseInt(b.amount.replace(/\D/g, ''));
-				return bAmount - aAmount;
-			});
-		case 'amount_asc':
-			return filteredCoupons.sort((a, b) => {
-				const aAmount = parseInt(a.amount.replace(/\D/g, ''));
-				const bAmount = parseInt(b.amount.replace(/\D/g, ''));
-				return aAmount - bAmount;
-			});
 		default:
 			return filteredCoupons;
 	}

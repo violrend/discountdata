@@ -29,17 +29,6 @@ function generateRandomCode(): string {
 	return `${type.prefix}${randomChars}${amount}`;
 }
 
-function generateRandomAmount(): string {
-	const isPercentage = Math.random() > 0.5;
-	if (isPercentage) {
-		const percentage = [5, 10, 15, 20, 25, 30, 40, 50][Math.floor(Math.random() * 8)];
-		return `${percentage}%`;
-	} else {
-		const amount = [5, 10, 15, 20, 25, 30, 50, 100][Math.floor(Math.random() * 8)];
-		return `$${amount}`;
-	}
-}
-
 function generateRandomUrl(): string {
 	const domain = STORE_DOMAINS[Math.floor(Math.random() * STORE_DOMAINS.length)];
 	return `${domain}/promotions/${Math.random().toString(36).substring(2, 8)}`;
@@ -65,7 +54,8 @@ export function generateCoupons(count: number): Coupon[] {
 			i + 1,
 			generateRandomCode(),
 			generateRandomUrl(),
-			generateRandomAmount()
+			`Coupon ${i + 1}`,
+			`This is the description for coupon ${i + 1}`
 		);
 
 		// Generate some random votes
