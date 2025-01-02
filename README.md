@@ -13,7 +13,7 @@ DiscountDB is a community-driven platform that aims to collect and provide easy 
 - **Frontend**: SvelteKit with shadcn-svelte components
 - **Backend**: Supabase
 - **Package Manager**: Bun
-- **API Documentation**: Swagger UI (available at `/api/swagger`)
+- **API Documentation**: Swagger UI (available at `https://discountdb.data-view.ch/api/docs`)
 
 ## Getting Started 🚀
 
@@ -45,7 +45,7 @@ The application should now be running at `http://localhost:5173`
 
 Our API is fully documented using Swagger UI. You can access the documentation at:
 ```
-https://discountdb.data-view.ch/api/swagger
+https://discountdb.data-view.ch/api/docs
 ```
 
 ## License 📜
