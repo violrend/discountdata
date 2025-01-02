@@ -42,7 +42,7 @@ function generateRandomAmount(): string {
 
 function generateRandomUrl(): string {
 	const domain = STORE_DOMAINS[Math.floor(Math.random() * STORE_DOMAINS.length)];
-	return `https://www.${domain}/promotions/${Math.random().toString(36).substring(2, 8)}`;
+	return `${domain}/promotions/${Math.random().toString(36).substring(2, 8)}`;
 }
 
 function generateRandomVotes(startDate: Date, maxVotes: number): Date[] {

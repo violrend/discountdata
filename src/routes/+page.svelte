@@ -72,10 +72,10 @@
 </script>
 
 <div class="grid grid-rows-[auto_1fr] w-full h-full max-w-4xl m-auto pt-10">
-	<div class="w-full grid grid-cols-[1fr_auto] h-20 m-auto space-x-2">
+	<div class="w-full md:grid md:grid-cols-[1fr_auto] md:h-20 h-28 m-auto md:space-x-2 md:space-y-0 space-y-2">
 		<Input placeholder="Search for a website" class="" bind:value={$searchValue} />
 		<Select.Root type="single" bind:value={$sortBy}>
-			<Select.Trigger class="w-[180px]">
+			<Select.Trigger class="md:w-[180px] w-full">
 				{sortOptionNames[$sortBy] ?? 'Sort by'}
 			</Select.Trigger>
 			<Select.Content>
@@ -118,7 +118,7 @@
 						</h3>
 					</div>
 					<div class="w-full flex justify-between text-sm">
-						<a href="{coupon.url}" target="_blank" class="hover:text-blue-400 hover:opacity-100 opacity-60 duration-100">
+						<a href="https://{coupon.url}" target="_blank" class="hover:text-blue-400 hover:opacity-100 opacity-60 duration-100 max-w-[50%] truncate">
 							{coupon.url}
 						</a>
 						<p class="opacity-60">
