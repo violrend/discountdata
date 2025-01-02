@@ -17,8 +17,11 @@
 	<div class="w-full h-20 p-2">
 		<div class="w-full">
 			<div class="h-20 w-full flex justify-between items-center p-5 max-w-6xl mx-auto">
-				<div>
+				<div class="flex items-end">
 					<h1 class="text-2xl font-semibold">DiscountDB</h1>
+					<div class="pl-10">
+						<a href="/api/docs">Docs</a>
+					</div>
 				</div>
 				<div>
 					<Button href="https://github.com/ImGajeed76/discountdb" target="_blank"

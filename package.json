@@ -44,7 +44,9 @@
 	},
 	"dependencies": {
 		"@supabase/supabase-js": "^2.47.10",
+		"@types/swagger-ui": "^3.52.4",
 		"lucide-svelte": "^0.469.0",
-		"mode-watcher": "^0.5.0"
+		"mode-watcher": "^0.5.0",
+		"swagger-ui": "^5.18.2"
 	}
 }
