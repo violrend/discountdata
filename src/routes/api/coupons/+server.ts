@@ -29,8 +29,8 @@ redis.on('error', (err) => console.error('Redis Client Error:', err));
 await redis.connect();
 
 // Configuration
-const RATE_LIMIT = 1; // requests per window
-const WINDOW_S = 1; // window in seconds
+const RATE_LIMIT = 60; // requests per window
+const WINDOW_S = 60; // window in seconds
 const MAX_PAGE_SIZE = 100;
 const MAX_SEARCH_LENGTH = 100;
 const CACHE_DURATION = 300; // 5 minutes in seconds
