@@ -38,6 +38,21 @@
 		}
 	}
 
+	const loadingMore = writable<boolean>(false);
+
+	async function loadMore() {
+		try {
+			loadingMore.set(true);
+			const currentCoupons = get(sortedCoupons);
+			const newCoupons = await fetchCoupons(get(searchValue), $sortBy, 10, currentCoupons.length);
+			sortedCoupons.set([...currentCoupons, ...newCoupons.data]);
+		} catch (e) {
+			console.log(e);
+		} finally {
+			loadingMore.set(false);
+		}
+	}
+
 	onMount(async () => {
 		await updateCoupons();
 
@@ -206,19 +221,18 @@
 						</div>
 					</div>
 				</div>
-				<Dialog.Root>
-					<Dialog.Content>
-						<Dialog.Title>
-							{coupon.code}
-						</Dialog.Title>
-					</Dialog.Content>
-				</Dialog.Root>
 			{/each}
 			{#if $sortedCoupons.length === 0}
 				<div class="w-full h-24 rounded-md border p-5 flex justify-center items-center bg-background">
 					<p>
 						No coupons found
 					</p>
+				</div>
+			{:else}
+				<div class="w-full h-fit flex justify-center pt-5">
+					<Button class="" onclick={loadMore} disabled={$loadingMore}>
+						Load more
+					</Button>
 				</div>
 			{/if}
 		</div>
