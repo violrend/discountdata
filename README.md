@@ -54,7 +54,7 @@ The application should now be running at `http://localhost:5173`
 Our API is fully documented using Swagger UI. You can access the documentation at:
 
 ```
-https://api.discountdb.data-view.ch/api/v1/docs
+https://api.discountdb.ch/api/v1/docs
 ```
 
 ## License 📜
