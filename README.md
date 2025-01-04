@@ -7,14 +7,15 @@ An open-source database for coupons and discounts, freely available for everyone
 DiscountDB is a community-driven platform that aims to collect and provide easy access to discount coupons across
 various services and retailers. Our mission is to make savings accessible to everyone through open data.
 
-🌐 **Live Website**: [https://discountdb.data-view.ch/](https://discountdb.data-view.ch/)
+🌐 **Live Website**: [https://discountdb.ch/](https://discountdb.ch/)
+📚 **API Repo**: [https://github.com/ImGajeed76/discountdb-api](https://github.com/ImGajeed76/discountdb-api)
 
 ## Technology Stack 💻
 
 - **Frontend**: SvelteKit with shadcn-svelte components
 - **Backend**: Supabase
 - **Package Manager**: Bun
-- **API Documentation**: Swagger UI (available at `https://api.discountdb.data-view.ch/api/v1/docs`)
+- **API Documentation**: Swagger UI (available at `https://api.discountdb.ch/api/v1/docs`)
 
 ## Getting Started 🚀
 

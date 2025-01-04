@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.discountdb.data-view.ch/api/v1";
+const BASE_URL = "https://api.discountdb.ch/api/v1";
 
 export type DiscountType = "PERCENTAGE_OFF" | "FIXED_AMOUNT" | "BOGO" | "FREE_SHIPPING";
 
