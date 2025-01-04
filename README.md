@@ -8,6 +8,7 @@ DiscountDB is a community-driven platform that aims to collect and provide easy 
 various services and retailers. Our mission is to make savings accessible to everyone through open data.
 
 🌐 **Live Website**: [https://discountdb.ch/](https://discountdb.ch/)
+
 📚 **API Repo**: [https://github.com/ImGajeed76/discountdb-api](https://github.com/ImGajeed76/discountdb-api)
 
 ## Technology Stack 💻
