@@ -32,7 +32,7 @@
 
 			updateTimeout = setTimeout(async () => {
 				sortedCoupons.set((await fetchCoupons(get(searchValue), $sortBy, 10, 0)).data);
-			}, 200);
+			}, 500);
 		} catch (e) {
 			console.log(e);
 		}
@@ -131,7 +131,7 @@
 	<ScrollArea class="w-full h-full space-y-5">
 		<div class="px-4 space-y-2">
 			{#each $sortedCoupons as coupon}
-				<div class="w-full md:h-36 h-48 rounded-md border p-5 flex flex-col justify-around bg-background">
+				<div class="w-full h-fit rounded-md border p-5 flex flex-col justify-around bg-background">
 					<div class="grid md:grid-cols-4 grid-cols-1 space-y-2 md:space-y-0">
 						<div class="w-full flex flex-col items-start col-span-3">
 							<h3 class="text-xl font-semibold">
