@@ -14,7 +14,7 @@ various services and retailers. Our mission is to make savings accessible to eve
 - **Frontend**: SvelteKit with shadcn-svelte components
 - **Backend**: Supabase
 - **Package Manager**: Bun
-- **API Documentation**: Swagger UI (available at `https://discountdb.data-view.ch/api/docs`)
+- **API Documentation**: Swagger UI (available at `https://api.discountdb.data-view.ch/api/v1/docs`)
 
 ## Getting Started 🚀
 
