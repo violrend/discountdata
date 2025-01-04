@@ -13,7 +13,6 @@
 	import { onMount } from 'svelte';
 	import * as Tooltip from '$lib/components/ui/tooltip/index';
 	import * as Select from '$lib/components/ui/select/index';
-	import * as Dialog from '$lib/components/ui/dialog/index';
 	import { Button } from '$lib/components/ui/button';
 
 
