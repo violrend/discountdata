@@ -193,15 +193,8 @@ export async function fetchCoupons(
 }
 
 export async function upVoteCoupon(couponId: number): Promise<void> {
-	const res = await fetch(`${BASE_URL}/coupons/vote`, {
+	const res = await fetch(`${BASE_URL}/coupons/vote/up/${couponId}`, {
 		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify({
-			"id": couponId,
-			"dir": "up"
-		})
 	});
 
 	if (!res.ok) {
@@ -210,15 +203,8 @@ export async function upVoteCoupon(couponId: number): Promise<void> {
 }
 
 export async function downVoteCoupon(couponId: number): Promise<void> {
-	const res = await fetch(`${BASE_URL}/coupons/vote`, {
+	const res = await fetch(`${BASE_URL}/coupons/vote/down/${couponId}`, {
 		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify({
-			"id": couponId,
-			"dir": "down"
-		})
 	});
 
 	if (!res.ok) {
