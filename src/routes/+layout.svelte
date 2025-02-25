@@ -20,7 +20,7 @@
 				<div class="flex items-end">
 					<h1 class="text-2xl font-semibold">DiscountDB</h1>
 					<div class="pl-10">
-						<a href="https://api.discountdb.ch/api/v1/docs">Docs</a>
+						<a href="https://db.joinsyrup.com/api/v1/docs">Docs</a>
 					</div>
 				</div>
 				<div>

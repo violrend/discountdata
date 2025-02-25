@@ -16,7 +16,7 @@ various services and retailers. Our mission is to make savings accessible to eve
 - **Frontend**: SvelteKit with shadcn-svelte components
 - **Backend**: Supabase
 - **Package Manager**: Bun
-- **API Documentation**: Swagger UI (available at `https://api.discountdb.ch/api/v1/docs`)
+- **API Documentation**: Swagger UI (available at `https://db.joinsyrup.com/api/v1/docs`)
 
 ## Getting Started 🚀
 
@@ -54,7 +54,7 @@ The application should now be running at `http://localhost:5173`
 Our API is fully documented using Swagger UI. You can access the documentation at:
 
 ```
-https://api.discountdb.ch/api/v1/docs
+https://db.joinsyrup.com/api/v1/docs
 ```
 
 ## License 📜
